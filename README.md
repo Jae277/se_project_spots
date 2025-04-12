@@ -12,4 +12,8 @@ An image sharing.
 
 This webpage is Deployed to Github Pages
 
-[Deployment Link](https://jae277.github.io/se_project_spots):
+[Deployment Link](https://jae277.github.io/se_project_spots):z
+
+## A Video About My Project
+
+https://youtu.be/-bSurDJphwc

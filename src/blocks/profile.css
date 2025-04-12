@@ -7,7 +7,7 @@
   height: 190px;
   width: 190px;
   margin-right: 20px;
-  border-radius: 50%;
+  border-radius: 8px;
 }
 
 .profile__column {
@@ -42,6 +42,7 @@
   color: #212121;
   opacity: 70%;
   line-height: 16px;
+  font-weight: 500;
 }
 
 .profile__edit-btn {
@@ -58,7 +59,16 @@
   color: #212121;
 }
 
+.profile__edit-btn:hover {
+  opacity: 100%;
+}
+
+.profile__add-btn:hover {
+  opacity: 80%;
+}
+
 .profile__add-btn {
+  width: 100%;
   font-size: 16px;
   font-weight: 500;
   line-height: 16px;
@@ -89,10 +99,13 @@
 
   .profile__add-btn {
     margin: 0 auto;
+    cursor: pointer;
+    width: 100%;
   }
 
   .profile__edit-btn {
     margin: 0 auto;
+    cursor: pointer;
   }
 
   .profile__name {
@@ -108,7 +121,7 @@
   }
 
   .profile__column {
-    margin: 0 0 32px;
+    margin: 0 0 20px;
   }
 
   .profile__avatar {
