@@ -11,28 +11,29 @@
   </head>
   <body>
     <div class="page">
+     
       <header class="header">
         <img
-  src="<%=require('./images/Logo.svg')%>"
-  alt="Spots logo"
-  class="header__logo"
-/>
+        src="<%=require('./images/Logo.svg')%>"
+        alt="Spots logo"
+        class="header__logo"
+      />
       </header>
       <main class="content">
         <section class="profile page__section">
           <div class="profile__avatar-container">
-          <button class="profie__avatar-btn">
+            <button class="profie__avatar-btn">
+              <img
+                src="./images/profile_pencil.svg"
+                alt="Change profile picture"
+                class="pencil-icon"
+              />
+            </button>
             <img
-              src="./images/profile_pencil.svg"
-              alt="Change profile picture"
-              class="pencil-icon"
+              src="./images/avatar.jpg"
+              alt="Bessie Coleman"
+              class="profile__avatar"
             />
-          </button>
-          <img
-            src="./images/avatar.jpg"
-            alt="Bessie Coleman"
-            class="profile__avatar"
-          />
           </div>
           <div class="profile__column">
             <h1 class="profile__name">
@@ -154,12 +155,12 @@
         <p class="modal__caption"></p>
       </div>
     </div>
-   
+
     <div class="modal" id="avatar-modal">
       <div class="modal__container">
         <button type="button" class="modal__close-btn"></button>
         <h2 class="modal__title">Edit Avatar</h2>
-        <form name="edit-avatar-profile" class="modal__form" novalidate>
+        <form name="edit-avatar-profile" id="modal_form" class="modal__form" novalidate>
           <label for="profile-avatar-input" class="modal__label">
             Avatar
             <input
@@ -167,11 +168,25 @@
               class="modal__input"
               placeholder="Avatar  goes here"
               required
-            
             />
             <span id="profile-avatar-input-error" class="modal__error"></span>
           </label>
           <button type="submit" class="modal__submit-btn">Save</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- style the  modal -->
+
+    <div class="modal" id="delete-modal">
+      <div class="modal__container">
+        <button type="button" class="modal__close-btn"></button>
+        <h2 class="modal__title">
+          Are you sure you want to delete this image?
+        </h2>
+        <form name="delete-avatar-profile" class="delete__form" novalidate>
+          <button class="modal__button" type="submit">Delete</button>
+          <button class="modal__button" type="button">Cancel</button>
         </form>
       </div>
     </div>

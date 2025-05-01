@@ -7,6 +7,9 @@ An image sharing.
 - Html
 - css
 - Responsive Design
+- Api
+- javascript
+
 
 ## Deployment
 
