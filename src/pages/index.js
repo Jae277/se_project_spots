@@ -89,7 +89,7 @@ const cardLinkInput = cardModal.querySelector("#add-card-link-input");
 
 // avatar form elements
 const avatarModal = document.querySelector("#avatar-modal");
-
+const avatarImage = document.querySelector(".profile__avatar");
 const avatarForm = avatarModal.querySelector("#modal_form");
 const avatarSubmitBtn = avatarForm.querySelector(".modal__submit-btn");
 const avatarModalClosedBtn = avatarModal.querySelector(".modal__close-btn");
@@ -223,7 +223,7 @@ function handleDeleteCardSubmit(evt) {
     })
     .catch(console.error);
 }
- 
+
 function handleAvatarSubmit(evt) {
   evt.preventDefault();
   api
@@ -257,7 +257,6 @@ avatarSubmitBtn.addEventListener("click", () => {
 });
 
 avatarForm.addEventListener("submit", handleAvatarSubmit);
-
 avatarModalClosedBtn.addEventListener("submit", handleDeleteCardSubmit);
 
 avatarProfileClosedBtn.addEventListener("click", () => {
