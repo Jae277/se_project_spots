@@ -1,4 +1,4 @@
-import "./index.css";
+import "./index.css"; 
 import { enableValidation, validationConfig } from "../scripts/validation.js";
 import Api from "../utils/Api.js";
 import { setButtontext } from "../utils/helpers.js";
@@ -60,7 +60,7 @@ api
 const avatarProfileClosedBtn = document.querySelector(
   ".profile__avatar-close-btn"
 );
-const avatarModalBtn = document.querySelector(".profile__avatar-btn");
+const avatarModalBtn = document.querySelector("modal__close-btn");
 const profileEditButton = document.querySelector(".profile__edit-btn");
 const cardModalBtn = document.querySelector(".profile__add-btn");
 const profileName = document.querySelector(".profile__name");
@@ -89,7 +89,7 @@ const cardLinkInput = cardModal.querySelector("#add-card-link-input");
 
 // avatar form elements
 const avatarModal = document.querySelector("#avatar-modal");
-const avatarImage = document.querySelector(".profile__avatar");
+const avatarImage = document.querySelector(".modal__close-btn");
 const avatarForm = avatarModal.querySelector("#modal_form");
 const avatarSubmitBtn = avatarForm.querySelector(".modal__submit-btn");
 const avatarModalClosedBtn = avatarModal.querySelector(".modal__close-btn");
@@ -259,6 +259,6 @@ avatarSubmitBtn.addEventListener("click", () => {
 avatarForm.addEventListener("submit", handleAvatarSubmit);
 avatarModalClosedBtn.addEventListener("submit", handleDeleteCardSubmit);
 
-avatarProfileClosedBtn.addEventListener("click", () => {
+avatarModalClosedBtn.addEventListener("click", () => {
   closeModal(avatarModal);
 });

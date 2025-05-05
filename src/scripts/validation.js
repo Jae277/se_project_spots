@@ -47,6 +47,11 @@ const disableButton = (button, config) => {
   button.classList.add(config.inactiveButtonClass);
 };
 
+
+
+
+
+
 const enableButton = (button, config) => {
   button.disabled = false;
   button.classList.remove(config.inactiveButtonClass);
@@ -95,5 +100,7 @@ export const enableValidation = (settings) => {
     setEventListeners(formEl, settings);
   });
 };
+
+export { resetValidation };
 
 enableValidation(settings);
