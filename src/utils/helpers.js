@@ -1,8 +1,7 @@
-export function setButtontext(btn,isLoading,loadingtext = "Saving...",defaultText = "Save") {
-    if(isLoading) {
+export function setButtontext(btn, isLoading, loadingtext = "Saving...", defaultText = "Save") {
+    if (isLoading) {
         btn.textContent = isLoading ? loadingText : defaultText;
-    }
-    else {
+    } else {
         btn.disabled = isLoading; 
     }
 }

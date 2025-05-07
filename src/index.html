@@ -22,7 +22,7 @@
       <main class="content">
         <section class="profile page__section">
           <div class="profile__avatar-container">
-            <button class="profie__avatar-btn">
+            <button class="profile__avatar-btn">
               <img
                 src="<%= require('./images/profile_pencil.svg') %>"
                 alt="Change profile picture"
@@ -50,7 +50,7 @@
             </button>
           </div>
           <button type="button" class="profile__add-btn">
-            <img src="<%= require('./images/Group26.svg') %>" alt="Plus icon" />New Post
+            <img src="<%=require('./images/Group26.svg')%>" alt="Plus icon" />New Post
           </button>
         </section>
         <section class="cards page__section">
@@ -159,14 +159,14 @@
     <div class="modal" id="avatar-modal">
       <div class="modal__container">
         <button type="button" class="modal__close-btn"></button>
-        <h2 class="modal__title">Edit Avatar</h2>
+        <h2 class="modal__title">Edit profile avatar</h2>
         <form name="edit-avatar-profile" id="modal_form" class="modal__form" novalidate>
           <label for="profile-avatar-input" class="modal__label">
-            Avatar
+           Profile Picture
             <input
               id="profile-avatar-input"
               class="modal__input"
-              placeholder="Avatar  goes here"
+              placeholder="Paste the link to an Image"
               required
             />
             <span id="profile-avatar-input-error" class="modal__error"></span>

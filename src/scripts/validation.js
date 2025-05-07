@@ -59,7 +59,7 @@ const enableButton = (button, config) => {
 
 const resetValidation = (formElement, settings) => {
   const inputList = Array.from(
-    formElement.querySelectorAll(settings.inputSelector)
+    formElement.querySelectorAll(settings.inputSelector) 
   );
   const buttonElement = formElement.querySelector(
     settings.submitButtonSelector
