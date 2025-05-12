@@ -123,7 +123,6 @@ function getCardElement(data) {
   });
   cardDeleteBtn.addEventListener("click", (evt) => {
     handleDeleteCard(cardElement, data._id);
-    api.deleteCard(selectedCardId);
   });
 
   return cardElement;

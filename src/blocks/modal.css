@@ -32,6 +32,44 @@
   border-radius: 8px;
 }
 
+.modal__button_cancel {
+  justify-content: center;
+  display: flex;
+  width: 156px;
+  height: 52px;
+  border-radius: 8px;
+  padding-top: 18px;
+  padding-right: 32px;
+  padding-bottom: 18px;
+  padding-left: 32px;
+  gap: 8px;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.modal__button_delete {
+ justify-content: center;
+ display: flex;
+  width: 156px;
+  height: 52px;
+  border-radius: 8px;
+  padding-top: 18px;
+  padding-right: 32px;
+  padding-bottom: 18px;
+  padding-left: 32px;
+  gap: 8px;
+  cursor: pointer;
+
+  background-color: #ff6565;
+}
+.modal__close-btn {
+  width: 40;
+  height: 40;
+  top: 324px;
+
+  cursor: pointer;
+}
+
 .modal__caption {
   background-color: #212121;
   color: white;
