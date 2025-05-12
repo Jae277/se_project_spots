@@ -63,6 +63,9 @@ api
 const avatarProfileClosedBtn = document.querySelector(
   ".profile__avatar-close-btn"
 );
+
+
+// profile form elements
 const profileEditButton = document.querySelector(".profile__edit-btn");
 const cardModalBtn = document.querySelector(".profile__add-btn");
 const profileName = document.querySelector(".profile__name");
@@ -78,7 +81,9 @@ const editDescriptionInput = editModal.querySelector(
 //  delete   form  elements
 const deleteModal = document.querySelector("#delete-modal");
 const deleteForm = deleteModal.querySelector(".delete__form");
+const deleteModalClose = deleteModal.querySelector(".modal__close-btn");
 
+// card form elements
 const cardModal = document.querySelector("#add-card-modal");
 const cardForm = cardModal.querySelector(".modal__form");
 const cardSubmitBtn = cardForm.querySelector(".modal__submit-btn");
@@ -261,7 +266,9 @@ avatarSubmitBtn.addEventListener("click", () => {
   openModal(avatarModal);
 });
 
-
+deleteModalClose.addEventListener("click", () => {
+  closeModal(deleteModal);
+});
 
 avatarImage.addEventListener("click", () => {
   openModal(avatarModal);
