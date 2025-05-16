@@ -1,0 +1,17 @@
+.footer {
+  padding: 60px 0;
+}
+
+.footer__copyright {
+  font-family: Poppins, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 16px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  margin: 0;
+  color: #212121;
+  opacity: 70%;
+  text-align: center;
+}
