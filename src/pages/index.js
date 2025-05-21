@@ -82,6 +82,7 @@ const editDescriptionInput = editModal.querySelector(
 const deleteModal = document.querySelector("#delete-modal");
 const deleteForm = deleteModal.querySelector(".delete__form");
 const deleteModalClose = deleteModal.querySelector(".modal__close-btn");
+const deleteModalCancelBtn = deleteModal.querySelector(".modal__button_cancel");
 
 // card form elements
 const cardModal = document.querySelector("#add-card-modal");
@@ -197,8 +198,8 @@ function handleEditFormSubmit(evt) {
     })
     .catch(console.error)
     .finally(() => {
-      // submitBtn.textContent = "Save";
-      setButtontext(submitBtn, true);
+     const submitBtn = evt.submitter;
+      setButtontext(submitBtn,false);
     });
 }
 
@@ -264,6 +265,10 @@ cardForm.addEventListener("submit", handleAddCardSubmit);
 
 avatarSubmitBtn.addEventListener("click", () => {
   openModal(avatarModal);
+});
+
+deleteModalCancelBtn.addEventListener("click", () => {
+  closeModal(deleteModal);
 });
 
 deleteModalClose.addEventListener("click", () => {
