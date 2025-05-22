@@ -5,7 +5,7 @@ import {
   disableButton,
 } from "../scripts/validation.js";
 import Api from "../utils/Api.js";
-import { setButtontext } from "../utils/helpers.js";
+import { setButtontext, getInputValues } from "../utils/helpers.js";
 const initialCards = [
   {
     name: "Val Thorens",
@@ -55,6 +55,7 @@ api
     profileName.textContent = userData.name;
     profileDescription.textContent = userData.about;
     avatarImage.src = userData.avatar;
+    setUserData(data);
   })
   .catch((err) => {
     console.error("Error fetching data:", err);
@@ -97,7 +98,7 @@ const cardLinkInput = cardModal.querySelector("#add-card-link-input");
 
 // avatar form elements
 const avatarModal = document.querySelector("#avatar-modal");
-const avatarImage = document.querySelector(".profile__avatar-btn");
+const avatarImage = document.querySelector(".profile__avatar");
 const avatarForm = avatarModal.querySelector("#modal_form");
 const avatarSubmitBtn = avatarForm.querySelector(".modal__submit-btn");
 const avatarModalClosedBtn = avatarModal.querySelector(".modal__close-btn");
@@ -154,6 +155,13 @@ function handleOverlayClick(evt) {
   if (evt.target.classList.contains("modal_opened")) {
     closeModal(evt.target);
   }
+}
+
+
+function setUserData(data) {
+  profileName.textContent = data.name;
+  profileDescription.textContent = data.about;
+  avatarImage.src = data.avatar;
 }
 
 function handleLike(evt, id) {
@@ -253,7 +261,7 @@ function handleAvatarSubmit(evt) {
   const avatarLink = avatarInput.value;
 
   api
-    .updateAvatar({ avatar: avatarLink })
+    .editAvatarInfo({ avatar: avatarLink })
     .then((data) => {
       avatarImage.src = data.avatar;
       closeModal(avatarModal);
