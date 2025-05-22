@@ -206,10 +206,6 @@ function handleEditFormSubmit(evt) {
 
 
 
-
-
-
-
 function handleDeleteCard(cardElement, cardId) {
   selectedCard = cardElement;
   selectedCardId = cardId;
