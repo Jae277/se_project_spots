@@ -4,17 +4,14 @@ class Api {
     this._headers = options.headers;
   }
 
-  getUserInfo() {
-    return fetch(`${this._baseUrl}/users/me`, {
-      headers: this._headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      Promise.reject(`Error: ${res.status}`);
-    });
-  }
-
+  _checkResponse(res){
+ return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`); 
+}
+getUserInfo() {
+  return fetch(`${this._baseUrl}/users/me`, {
+    headers: this._headers,
+  }).then(this._checkResponse);
+}
   getAppInfo() {
     return Promise.all([
       this.getUserInfo(),

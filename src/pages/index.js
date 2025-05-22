@@ -199,9 +199,16 @@ function handleEditFormSubmit(evt) {
     .catch(console.error)
     .finally(() => {
      const submitBtn = evt.submitter;
-      setButtontext(submitBtn,false);
+      setButtontext(submitBtn, false);
     });
 }
+
+
+
+
+
+
+
 
 function handleDeleteCard(cardElement, cardId) {
   selectedCard = cardElement;
@@ -212,17 +219,24 @@ function handleDeleteCard(cardElement, cardId) {
 let selectedCard, selectedCardId;
 
 function handleAddCardSubmit(evt) {
+  const submitBtn = evt.submitter;
+  setButtontext(submitBtn, false, "Saving...");
   evt.preventDefault();
-  const inputValues = { name: cardNameInput.value, link: cardLinkInput.value };
-  api.addCard(inputValues).then((res) => {
-    console.log(res);
-    const cardEl = getCardElement(res);
-    cardsList.prepend(cardEl);
-    cardForm.reset();
-    disableButton(cardSubmitBtn,settings);
-    closeModal(cardModal);
-  });
+
+  const name = addCardForm.querySelector('input[name="name"]').value;
+  const link = addCardForm.querySelector('input[name="link"]').value;
+
+  api
+    .addCard({ name, link })
+    .then((cardData) => {
+      closeModal(addCardModal);
+    })
+    .catch(console.error)
+    .finally(() => {
+      setButtontext(submitBtn, false);
+    });
 }
+
 
 function handleDeleteCardSubmit(evt) {
   evt.preventDefault();
@@ -236,17 +250,24 @@ function handleDeleteCardSubmit(evt) {
 }
 
 function handleAvatarSubmit(evt) {
+  const submitBtn = evt.submitter;
+  setButtontext(submitBtn, false, "Saving...");
   evt.preventDefault();
+
+  const avatarLink = avatarInput.value;
+
   api
-    .editAvatarInfo({ avatar: avatarInput.value })
+    .updateAvatar({ avatar: avatarLink })
     .then((data) => {
       avatarImage.src = data.avatar;
       closeModal(avatarModal);
     })
-    .catch((err) => {
-      console.error(err);
+    .catch(console.error)
+    .finally(() => {
+      setButtontext(submitBtn, false);
     });
 }
+
 
 profileEditButton.addEventListener("click", () => {
   editModalNameInput.value = profileName.textContent;
