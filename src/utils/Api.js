@@ -27,7 +27,7 @@ getUserInfo() {
         return res.json();
       }
       Promise.reject(`Error: ${res.status}`);
-    });
+    }).then(this._checkResponse);
   }
 
   // other methods for working with the API
@@ -45,7 +45,7 @@ getUserInfo() {
         return res.json();
       }
       return Promise.reject(`Error: ${res.status}`);
-    });
+    }).then(this._checkResponse);
   }
 
   // implement post cards
@@ -70,7 +70,7 @@ getUserInfo() {
     });
   }
 
-  editAvatarInfo(avatar) {
+  editAvatarInfo({avatar}) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
