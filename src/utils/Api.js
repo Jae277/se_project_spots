@@ -19,34 +19,32 @@ getUserInfo() {
     ]);
   }
 
-  getInitialCards() {
+ getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      Promise.reject(`Error: ${res.status}`);
-    }).then(this._checkResponse);
+    })
+    .then(this._checkResponse);
   }
-
+  
   // other methods for working with the API
 
-  editUserInfo({ name, about }) {
-    return fetch(`${this._baseUrl}/users/me`, {
-      method: "PATCH",
-      headers: this._headers,
-      body: JSON.stringify({
-        name,
-        about,
-      }),
-    }).then((res) => {
+ editUserInfo({ name, about }) {
+  return fetch(`${this._baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: this._headers,
+    body: JSON.stringify({
+      name,
+      about
+    })
+  })
+    .then((res) => {
       if (res.ok) {
         return res.json();
       }
       return Promise.reject(`Error: ${res.status}`);
     }).then(this._checkResponse);
-  }
+}
+
 
   // implement post cards
 
@@ -104,9 +102,6 @@ getUserInfo() {
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: isLiked ? "PUT" : "DELETE",
       headers: this._headers,
-      body: JSON.stringify({
-        avatar,
-      }),
     }).then((res) => {
       if (res.ok) {
         return res.json();

@@ -10,10 +10,12 @@
   border-radius: 8px;
 }
 
-
-
 .profile__avatar-container {
   position: relative;
+}
+
+.profile__avatar-btn::after {
+  content: "Edit Avatar";
 }
 
 .profile__avatar-btn {
@@ -31,10 +33,6 @@
 .profile__avatar-container:hover .profile__avatar-btn {
   cursor: pointer;
   visibility: visible;
-}
-
-.profile__avatar::after {
-  content: "Edit Avatar";
 }
 
 .profile__column {
@@ -125,11 +123,22 @@
   }
 
   .profile__avatar-btn {
+    top: 52px;
+    left: 52px;
+    border-radius: 6px;
+    padding: 4px;
+    gap: 8px;
     visibility: visible;
   }
 
-  /*  Todo  set  content of  :: after element to "" */
-  /* todo finish mobile avatar button styles */
+  .profile__avatar-btn::after {
+    top: 52px;
+    left: 52px;
+    gap: 8px;
+    border-radius: 6px;
+    padding: 4px;
+    content: "";
+  }
 
   .profile__add-btn {
     margin: 0 auto;
