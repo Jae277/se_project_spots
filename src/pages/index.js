@@ -125,9 +125,13 @@ function getCardElement(data) {
     previewModalImageEL.src = data.link;
     previewModalImageEL.alt = data.name;
   });
-  cardLikeBtn.addEventListener("click", () => {
-    cardLikeBtn.classList.toggle("card__like-btn_liked");
-  });
+
+    if (data.isLiked) {
+    cardLikeBtn.classList.add("card__like-btn_liked");
+
+    cardLikeBtn.addEventListener("click", (evt) => handleLike(evt, data._id));
+  }
+
   cardDeleteBtn.addEventListener("click", (evt) => {
     handleDeleteCard(cardElement, data._id);
   });
