@@ -126,11 +126,11 @@ function getCardElement(data) {
     previewModalImageEL.alt = data.name;
   });
 
-    if (data.isLiked) {
+  if (data.isLiked) {
     cardLikeBtn.classList.add("card__like-btn_liked");
-
-    cardLikeBtn.addEventListener("click", (evt) => handleLike(evt, data._id));
   }
+
+  cardLikeBtn.addEventListener("click", (evt) => handleLike(evt, data._id));
 
   cardDeleteBtn.addEventListener("click", (evt) => {
     handleDeleteCard(cardElement, data._id);
@@ -192,11 +192,11 @@ function closeModal(modal) {
   modal.classList.remove("modal_opened");
   document.removeEventListener("keydown", handleEscapeKey);
 }
+
 function handleEditFormSubmit(evt) {
-  const submitBtn = evt.submitter;
-  submitBtn.textContent = "Saving...";
-  setButtontext(submitBtn, false, "Saving...");
   evt.preventDefault();
+  const submitBtn = evt.submitter;
+  setButtontext(submitBtn, true, "Saving...");
   api
     .editUserInfo({
       name: editModalNameInput.value,
@@ -209,7 +209,6 @@ function handleEditFormSubmit(evt) {
     })
     .catch(console.error)
     .finally(() => {
-      // submitBtn.textContent = "Save";
       setButtontext(submitBtn, false);
     });
 }
@@ -223,22 +222,24 @@ function handleDeleteCard(cardElement, cardId) {
 let selectedCard, selectedCardId;
 
 function handleAddCardSubmit(evt) {
+  evt.preventDefault();
   const submitBtn = evt.submitter;
   setButtontext(submitBtn, true);
-  evt.preventDefault();
 
   const name = cardNameInput.value;
   const link = cardLinkInput.value;
-  
-api
-  .addCard({ name, link })
-  .then((cardData) => {
-    const cardEl = getCardElement(cardData);
-    cardsList.prepend(cardEl);
-    closeModal(cardModal);
-    cardForm.reset();
-    disableButton(submitBtn, settings)
-  })
+
+  api
+    .addCard({ name, link })
+    .then((cardData) => {
+      const cardEl = getCardElement(cardData);
+      cardsList.prepend(cardEl);
+      closeModal(cardModal);
+      cardForm.reset();
+      disableButton(submitBtn, settings);
+    })
+    .catch(console.err)
+    .finally(() => setButtontext(submitBtn, false));
 }
 
 function handleDeleteCardSubmit(evt) {

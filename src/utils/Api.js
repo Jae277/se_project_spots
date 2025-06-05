@@ -41,7 +41,6 @@ getUserInfo() {
       if (res.ok) {
         return res.json();
       }
-      return Promise.reject(`Error: ${res.status}`);
     }).then(this._checkResponse);
 }
 
@@ -64,10 +63,9 @@ getUserInfo() {
       if (res.ok) {
         return res.json();
       }
-      return Promise.reject(`Error: ${res.status}`);
-    });
-  }
-
+    }).then(this._checkResponse);
+}
+     
   editAvatarInfo({avatar}) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
@@ -79,9 +77,8 @@ getUserInfo() {
       if (res.ok) {
         return res.json();
       }
-      return Promise.reject(`Error: ${res.status}`);
-    });
-  }
+    }).then(this._checkResponse);
+}
 
   deleteCard(id) {
     return fetch(`${this._baseUrl}/cards/${id}`, {
