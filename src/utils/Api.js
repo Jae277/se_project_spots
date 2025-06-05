@@ -91,9 +91,8 @@ getUserInfo() {
       if (res.ok) {
         return res.json();
       }
-      return Promise.reject(`Error: ${res.status}`);
-    });
-  }
+    }).then(this._checkResponse);
+}
   
   changeLikeStatus(id, isLiked) {
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
@@ -103,9 +102,9 @@ getUserInfo() {
       if (res.ok) {
         return res.json();
       }
-      return Promise.reject(`Error: ${res.status}`);
-    });
-  }
+    }).then(this._checkResponse);
 }
+}
+
 
 export default Api;
