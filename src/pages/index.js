@@ -59,6 +59,7 @@ api
   .catch((err) => {
     console.error("Error fetching data:", err);
   });
+  
 
 const avatarProfileClosedBtn = document.querySelector(
   ".profile__avatar-close-btn"
