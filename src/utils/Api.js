@@ -25,16 +25,8 @@ class Api {
   }
 
 
-
-
-  getInitialCards() {
-    return fetch(`${this._baseUrl}/cards`, {
-      headers: this._headers,
-    }).then(this._checkResponse);
-  }
-
 editAvatarInfo({avatar}) {
-  return fetch(`${this._baseUrl}/users/me`, {
+  return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
@@ -42,6 +34,16 @@ editAvatarInfo({avatar}) {
       }),
     }).then(this._checkResponse);
   }
+
+  getInitialCards() {
+    return fetch(`${this._baseUrl}/cards`, {
+      headers: this._headers,
+    }).then(this._checkResponse);
+  }
+
+
+
+
 
 
   editUserInfo({ name, about }) {
@@ -57,13 +59,10 @@ editAvatarInfo({avatar}) {
 
 
 deleteCard(id) {
-    return fetch(`${this._baseUrl}/cards/${id}`, {
-      method: "DELETE",
-      headers: this._headers,
-      body: JSON.stringify({
-        id,
-      }),
-    }).then(this._checkResponse);
+  return fetch(`${this._baseUrl}/cards/${id}`, {
+    method: "DELETE",
+    headers: this._headers,
+  }).then(this._checkResponse);
 }
 
 
@@ -88,7 +87,6 @@ deleteCard(id) {
     }).then(this._checkResponse);
 }
 }
-
 
 
 

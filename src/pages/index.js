@@ -48,10 +48,14 @@ const api = new Api({
 api
   .getAppInfo()
   .then(([userData, cards]) => {
-    cards.forEach((item) => {
+    // Use API cards if available, otherwise fall back to initial cards
+    const cardsToDisplay = cards && cards.length > 0 ? cards : initialCards;
+
+    cardsToDisplay.forEach((item) => {
       const cardElement = getCardElement(item);
       cardsList.prepend(cardElement);
     });
+
     profileName.textContent = userData.name;
     profileDescription.textContent = userData.about;
     avatarImage.src = userData.avatar;
@@ -59,7 +63,6 @@ api
   .catch((err) => {
     console.error("Error fetching data:", err);
   });
-  
 
 const avatarProfileClosedBtn = document.querySelector(
   ".profile__avatar-close-btn"
@@ -171,20 +174,15 @@ function setUserData(data) {
 function handleLike(evt, id) {
   const likeButton = evt.target;
   const isLiked = likeButton.classList.contains("card__like-btn_liked");
-  api
-    .changeLikeStatus(id, !isLiked)
-    .then(() => {
-      // Update the UI accordingly
-      likeButton.classList.toggle("card__like-btn_liked", !isLiked);
-    })
-    .catch((err) => {
-      console.error("Error updating like status:", err);
-    });
+  api.changeLikeStatus(id, !isLiked).then((updatedCard) => {
+    if (updatedCard.isLiked) {
+      likeButton.classList.add("card__like-btn_liked");
+    } else {
+      likeButton.classList.remove("card__like-btn_liked");
+    }
+  });
 }
-  
 
-
-  
 function openModal(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener("keydown", handleEscapeKey);
@@ -266,6 +264,8 @@ function handleAvatarSubmit(evt) {
     .then((data) => {
       avatarImage.src = data.avatar;
       closeModal(avatarModal);
+      avatarForm.reset();
+      disableButton(submitBtn, settings);
     })
     .catch(console.error)
     .finally(() => {
@@ -301,6 +301,7 @@ deleteModalClose.addEventListener("click", () => {
 });
 
 profileAvatarBtn.addEventListener("click", () => {
+  resetValidation(avatarForm, settings);
   openModal(avatarModal);
 });
 
