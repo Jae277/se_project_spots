@@ -53,7 +53,7 @@ api
 
     cardsToDisplay.forEach((item) => {
       const cardElement = getCardElement(item);
-      cardsList.prepend(cardElement);
+      cardsList.append(cardElement);
     });
 
     profileName.textContent = userData.name;
@@ -165,12 +165,6 @@ function handleOverlayClick(evt) {
   }
 }
 
-function setUserData(data) {
-  profileName.textContent = data.name;
-  profileDescription.textContent = data.about;
-  avatarImage.src = data.avatar;
-}
-
 function handleLike(evt, id) {
   const likeButton = evt.target;
   const isLiked = likeButton.classList.contains("card__like-btn_liked");
@@ -240,21 +234,27 @@ function handleAddCardSubmit(evt) {
     .catch(console.err)
     .finally(() => setButtontext(submitBtn, false));
 }
-
 function handleDeleteCardSubmit(evt) {
   evt.preventDefault();
+  const submitButton = evt.submitter;
+  const originalText = submitButton.textContent;
+  submitButton.textContent = "Deleting...";
+
   api
     .deleteCard(selectedCardId)
     .then(() => {
       selectedCard.remove();
       closeModal(deleteModal);
     })
-    .catch(console.error);
+    .catch(console.error)
+    .finally(() => {
+      submitButton.textContent = originalText;
+    });
 }
 
 function handleAvatarSubmit(evt) {
   const submitBtn = evt.submitter;
-  setButtontext(submitBtn, false, "Saving...");
+  setButtontext(submitBtn, true, "Saving...");
   evt.preventDefault();
 
   const avatarLink = avatarInput.value;
